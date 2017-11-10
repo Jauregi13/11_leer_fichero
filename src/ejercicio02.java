@@ -21,7 +21,7 @@ public class ejercicio02 {
 		//recorremos el fichero diviendo las 2 palabras de cada linea
 		int leer_linea = 0;
 		Scanner leer = new Scanner (fichero);
-		while (leer.hasNextLine() && leer_linea < contar_linea ) {
+		while (leer.hasNextLine()) {
 			String linea = leer.nextLine();
 			matriz[leer_linea] = linea.split(" ");
 			leer_linea++;
