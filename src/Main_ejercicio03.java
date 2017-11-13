@@ -62,8 +62,10 @@ public class Main_ejercicio03 {
 		return contador;
 	}
 
-	public static int contarA(char caracter1, File fichero) throws FileNotFoundException {
+	public static int contarA(String caracter, File fichero) throws FileNotFoundException {
 		int contador = 0;
+
+		char caracter1 = caracter.charAt(0);
 
 		Scanner leer_fichero = new Scanner(fichero);
 
@@ -96,17 +98,28 @@ public class Main_ejercicio03 {
 		return suma_total;
 	}
 
+	public static int contarNumerosMultiplos(int numero) {
+		int contador = 0;
+
+		for (int i = numero; i > 0; i--) {
+			if (i % 5 == 0) {
+				contador++;
+			}
+		}
+		return contador;
+	}
+
 	public static int[] multiplosDe5(int numero) {
 
-		int[] multiplos = {};
 		int indice = 0;
-		for (int i = numero; i > 0; i--) {
 
+		int[] multiplos = new int[contarNumerosMultiplos(numero)];
+
+		for (int i = numero - 1; i > 0; i--) {
 			if (i % 5 == 0) {
 				multiplos[indice] = i;
 				indice++;
 			}
-			
 		}
 
 		return multiplos;
@@ -157,7 +170,8 @@ public class Main_ejercicio03 {
 				break;
 
 			case CONTAR_A:
-				char caracter = 'a';
+				System.out.println("Escribe una vocal:");
+				String caracter = lector.nextLine();
 
 				System.out.println(contarA(caracter, fichero));
 				break;
@@ -171,19 +185,24 @@ public class Main_ejercicio03 {
 
 			case MULTIPLO_5:
 				System.out.println("Escribe un numero:");
-				
+
 				int numero2 = Integer.parseInt(lector.nextLine());
-				
+
 				int multiplos[] = multiplosDe5(numero2);
 				
-				for (int i = 0; i < multiplos.length; i++){
-					System.out.println(multiplos[i]);
+				System.out.println("Los multiplos de 5 inferiores al numero "+ numero2 + " son: ");
+
+				for (int i = 0; i < multiplos.length; i++) {
+					System.out.print(multiplos[i] +" ");
 				}
+				System.out.println("");
 
 				break;
 
 			case SALIR:
 				System.out.println("Saliendo...");
+
+				break;
 
 			default:
 				System.out.println("Numero introducido incorrecto");
